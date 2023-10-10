@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Data Type Suggester</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>SQL Data Type Suggester</h1>
+        <p>Working with webhooks, api's and json feeds? Bored of that same task of creating your sql tables to store the data?</p>
+        <p>Paste in an example JSON payload to see your suggested data types and an SQL query to make your tables in an instant.</p>
+        <textarea id="jsonInput" placeholder="Enter JSON here..."></textarea>
+        <div id="errorMsg" class="error-msg"></div> <!-- Error message area -->
+        <button id="submitBtn">Suggest</button>
+        <h2 class="output-header" style="display:none;">Suggestions:</h2>
+        <pre id="output" style="display:none;"></pre>
+        <h2 class="output-header" style="display:none;">MySQL Create Table Query:</h2>
+        <pre id="sqlOutput" style="display:none;"></pre>
+        <div class="info-icon" id="infoIcon">i</div>
+        <div class="modal" id="infoModal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <p>
+                    The SQL data type suggestions are based on the following logic:
+                <ul>
+                    <li><strong>INT:</strong> For integer numbers.</li>
+                    <li><strong>FLOAT:</strong> For non-integer numbers.</li>
+                    <li><strong>VARCHAR(n):</strong> For strings, where n is the length of the string plus a buffer of 10
+                        characters.</li>
+                    <li><strong>DATETIME:</strong> For strings that can be parsed into a date.</li>
+                    <li><strong>BOOLEAN:</strong> For boolean values.</li>
+                    <li><strong>NULL:</strong> For null values. Note: Actual implementation might require a specific data type
+                        based on the use case.</li>
+                    <li><strong>TEXT:</strong> For objects, arrays, or other complex structures.</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+        <p style="font-size:0.8rem; margin-top:30px;">No data is stored by this website. We do not track your entries, however I would always recommend replacing any sensitive details in your payloads prior to using this service.</p>
+    </div>
+
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
